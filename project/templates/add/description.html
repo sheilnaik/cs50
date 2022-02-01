@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="starter-template">
+  <div class="row justify-content-center mb-4">
+    <h1>Win Description</h1>
+  </div>
+  <div class="row justify-content-center">
+    <p class="lead" style="margin-bottom: 20px;">What is the title of your win?</p>
+  </div>
+  <form action="/add/description" method="post" autocomplete="off">
+    <div class="row mb-4">
+      <input type="text" name="win_title" class="form-control" placeholder="Name of Win">
+    </div>
+    <div class="row justify-content-center">
+      <p class="lead">When did your win take place?</p>
+    </div>
+    <div class="row mb-4">
+      <input type="text" name="win_date" class="form-control" placeholder="Date of Win (YYYY-MM-DD format)">
+    </div>
+    <div class="row justify-content-center">
+      <p class="lead">Enter a description of your win here.</p>
+    </div>
+    <div class="row mb-4">
+      <textarea name="win_description" class="form-control" rows=3 placeholder="Description of Win"></textarea>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="button" id="previous" class="btn btn-danger btn-lg btn-block" onclick="window.location.href='{{ url_for( 'analyst' ) }}';">
+        <i class="fas fa-arrow-circle-left" style="color:white;"></i> Previous
+        </button>
+      </div>
+      <div class="col">
+        <button type="submit" id="continue"
+        class="btn btn-success btn-lg btn-block"
+        >Continue <i class="fas fa-arrow-circle-right" style="color:white;"></i> </button>
+    </div>
+    </div>
+  </form>
+
+</div>
+
+<script>
+  var element = document.getElementById("add-link");
+  element.classList.add("active");
+</script>
+
+{% endblock %}
+

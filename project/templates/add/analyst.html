@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<style>
+.ui-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+
+.ui-autocomplete > li > div {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.ui-state-hover,
+.ui-state-active,
+.ui-state-focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #dadada;
+  cursor: pointer;
+}
+
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+  </style>
+
+<script>
+    $(function() {
+      var analyst_list = JSON.parse('{{ analyst_list | tojson | safe}}');
+      $( ".form-control" ).autocomplete({
+          source: analyst_list
+      });
+    });
+</script>
+
+<div class="starter-template">
+  <h1>Analysts</h1>
+  <p class="lead" style="margin-bottom: 20px;">Which analysts are tied to the win?
+  </p>
+
+  <div class="row">
+    <div class="control-group col-12" id="fields">
+      <div class="controls col-12">
+        <form role="form" action="/add/analyst" method="post" autocomplete="off">
+          <div class="entry input-group col-12">
+            <input class="form-control mb-1" id=analyst_id name="analyst_name[]" type="text" placeholder="Name (Last, First)" /> 
+            <span class="input-group-btn">
+              <button class="btn btn-success btn-add ml-2 align-middle" type="button">
+              <i class="fas fa-plus"></i> </button>
+            </span>
+          </div>
+          <button type="submit" id="submit"
+          class="btn btn-success btn-lg btn-block mt-4"
+          >Continue <i class="fas fa-arrow-circle-right" style="color:white;"></i> </button>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var element = document.getElementById("add-link");
+  element.classList.add("active");
+</script>
+
+<script>
+	$(function() {
+		$(document).on('click', '.btn-add', function(e) {
+			e.preventDefault();
+			var controlForm = $('.controls form:first'),
+				  currentEntry = $(this).parents('.entry:first'),
+          newEntry = $(currentEntry.clone()).appendTo(controlForm);
+      $( "#submit" ).remove();
+      $( "<button type='submit' id='submit' class='btn btn-success btn-lg btn-block mt-4'>Continue <i class='fas fa-arrow-circle-right' style='color:white;'></i> </button>" ).appendTo(controlForm);
+			newEntry.find('input').val('');
+			controlForm.find('.entry:not(:last) .btn-add').removeClass('btn-add').addClass('btn-remove').removeClass('btn-success').addClass('btn-danger').html('<i class="fas fa-minus"></i>');
+      var analyst_list = JSON.parse('{{ analyst_list | tojson | safe}}');
+      $( ".form-control" ).autocomplete({
+          source: analyst_list
+      });
+    }).on('click', '.btn-remove', function(e) {
+			$(this).parents('.entry:first').remove();
+			e.preventDefault();
+			return false;
+        });
+	});
+	</script>
+
+{% endblock %}
+

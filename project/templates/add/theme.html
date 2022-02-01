@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="starter-template">
+  <div class="row justify-content-center mb-4">
+    <h1>Theme</h1>
+  </div>
+  <div class="row justify-content-center">
+    <p style="margin-bottom: 20px;">This is an explanation of the theme category.</p>
+  </div>
+    <h3>Primary Theme</h3>
+    <form action="/add/theme" method="post" autocomplete="off">
+      <div class="row mb-4">
+        <select class="form-control" name="primary_theme" id="primary_theme" placeholder="Primary Theme">
+          <option value="" selected disabled>Select a primary theme...</option>
+            {% for theme in theme_list %}
+                <option>{{ theme }}</option>
+            {% endfor %}
+        </select>
+      </div>
+        <h3 class="mb-3">Secondary Themes</h3>
+      <div class="row mb-4 text-center">
+        <div class="col">
+          {% for theme in theme_list %}
+          <div class="form-check form-check form-check-inline">
+              <label><input class="form-check-input" type="checkbox" name="secondary_themes" value="{{ theme }}">{{ theme }}</label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <button type="button" id="previous" class="btn btn-danger btn-lg btn-block" onclick="window.location.href='{{ url_for( 'description' ) }}';">
+            <i class="fas fa-arrow-circle-left" style="color:white;"></i> Previous
+            </button>
+        </div>
+        <div class="col">
+            <button type="submit" id="continue" class="btn btn-success btn-lg btn-block">
+            Continue <i class="fas fa-arrow-circle-right" style="color:white;"></i> 
+            </button>
+        </div>
+      </div>
+      </form>
+
+</div>
+
+<script>
+  var element = document.getElementById("add-link");
+  element.classList.add("active");
+</script>
+
+{% endblock %}
+

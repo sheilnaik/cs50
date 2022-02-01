@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    C$50 Finance: Portfolio
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+
+  {% for row in rows %}
+    <tr>
+        <td>{{ row['symbol'] }}</td>
+        <td>{{ row['name'] }}</td>
+        <td>{{ row['shares'] }}</td>
+        <td>{{ row['price'] }}</td>
+        <td>{{ row['formatted_total'] }}</td>
+    </tr>
+  {% endfor %}
+
+  <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <th>{{ formatted_portfolio_total }}</th>
+  </tr>
+
+</table>
+
+{% endblock %}

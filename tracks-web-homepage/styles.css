@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 300%;
+}
+
+img.title {
+    height: 15%;
+    width: 15%;
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+a.nav-link, a.navbar-brand {
+    text-decoration: none;
+    text-decoration-style: none;
+}
+
+#joke {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 25px;
+    padding-left: 10px;
+    font-family: "Georgia", Times, serif;
+    color: gray;
+    font-style: italic;
+    font-size: 15px;
+    border-left: 3px solid gray;
+}

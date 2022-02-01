@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="starter-template">
+  <div class="row justify-content-center mb-4">
+    <h1>Approach</h1>
+  </div>
+  <div class="row justify-content-center">
+    <p style="margin-bottom: 20px;">This is an explanation of the approach category.</p>
+  </div>
+    <h3>Primary Approach</h3>
+    <form action="/add/approach" method="post" autocomplete="off">
+      <div class="row mb-4">
+        <select class="form-control" name="primary_approach" id="primary_approach" placeholder="Primary Approach">
+          <option value="" selected disabled>Select a primary approach...</option>
+            {% for approach in approach_list %}
+                <option>{{ approach }}</option>
+            {% endfor %}
+        </select>
+      </div>
+        <h3 class="mb-3">Secondary Approaches</h3>
+      <div class="row mb-4 text-center">
+        <div class="col">
+          {% for approach in approach_list %}
+          <div class="form-check form-check form-check-inline">
+              <label><input class="form-check-input" type="checkbox" name="secondary_approaches" value="{{ approach }}">{{ approach }}</label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <button type="button" id="previous" class="btn btn-danger btn-lg btn-block" onclick="window.location.href='{{ url_for( 'theme' ) }}';">
+            <i class="fas fa-arrow-circle-left" style="color:white;"></i> Previous
+            </button>
+        </div>
+        <div class="col">
+            <button type="submit" id="continue" class="btn btn-success btn-lg btn-block">
+            Continue <i class="fas fa-arrow-circle-right" style="color:white;"></i> 
+            </button>
+        </div>
+      </div>
+      </form>
+
+</div>
+
+<script>
+  var element = document.getElementById("add-link");
+  element.classList.add("active");
+</script>
+
+{% endblock %}
+

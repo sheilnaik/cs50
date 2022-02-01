@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="starter-template">
+  <p>
+    <i class="fas fa-trophy fa-8x" style="color:#f0ad4e"></i>
+  </p>
+  <h1>Wins</h1>
+  <p class="lead">Welcome to the Company Wins tool. Press the button below to add a new win.
+  </p>
+  <p>
+    <button type="button"
+    class="btn btn-success btn-lg btn-block"
+    onclick="window.location.href='{{ url_for( 'analyst' ) }}';"
+    >Add Win</button>
+  </p>
+
+</div>
+
+<script>
+  var element = document.getElementById("home-link");
+  element.classList.add("active");
+</script>
+
+{% endblock %}

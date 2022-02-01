@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/4.5/examples/starter-template/starter-template.css" rel="stylesheet">
+	<style>
+	.bd-placeholder-img {
+		font-size: 1.125rem;
+		text-anchor: middle;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	@media (min-width: 768px) {
+		.bd-placeholder-img-lg {
+			font-size: 3.5rem;
+		}
+	}
+	</style>
+	<title>My Favorite Jokes</title>
+</head>
+
+<body>
+	<audio id="sound">
+		<source src="nelson.mp3" /> </audio>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> <a class="navbar-brand" href="#">My Favorite Jokes</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"> <a class="nav-link" href="index.html">Home</a> </li>
+				<li class="nav-item active"> <a class="nav-link" href="links.html">Links to Other Pages</a> </li>
+				<li class="nav-item active"> <a class="nav-link" href="cs50.html">My CS50 Projects</a> </li>
+				<li class="nav-item active"> <a class="nav-link" href="jokes.html">Favorite Jokes</a> </li>
+			</ul>
+		</div>
+	</nav>
+	<h1>My Favorite Jokes</h1>
+	<p>Here are some of my favorite jokes.</p>
+	<p id="joke"> What do you call a dinosaur who forgot to take a bath? A stinkasaurus! </p>
+	<p id="joke"> Why do you never see elephants hiding in trees? Because they’re so good at it! </p>
+	<p id="joke"> There once was a man who refused to leave his house during a flood. When the water was two feet deep in his living room, one of his neighbors came by in his boat and offered to take him to higher ground. The man said "I'm not leaving. I have faith that God will keep me safe." The water kept rising and the man had to retreat to the second floor. Another boat came to the window to help. "I'm staying here. God will save me." The water kept rising and the man was on his roof, clinging to the chimney as the water swirled around him. A police rescue boat came by to help but the man refused. "God will save me." Soon the water swept the man away and he drowned. When he got to heaven, he demanded to speak to God. "Holy Father, I put my faith in you. Why didn't you help me?" God looked down at him and screamed "YOU IDIOT! I SENT THREE BOATS!" </p>
+	<p>Easter egg: Click one of the jokes for a fun treat!</p>
+	<script>
+	const mySound = document.getElementById("sound");
+	const j = document.getElementById("joke");
+	j.addEventListener("click", function() {
+		mySound.play();
+	});
+	</script>
+</body>
+
+</html>
